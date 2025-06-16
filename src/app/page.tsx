@@ -229,7 +229,7 @@ export default function Home() {
             {/* Copyright */}
             <div className="text-center md:text-left">
               <p className="text-sm text-slate-400">
-                © 2025 Regional AI Transcript Generator
+                © 2025 Lexima | Indian AI Transcript Generator
               </p>
             </div>
 
