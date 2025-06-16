@@ -1,5 +1,10 @@
-import { kv } from '@vercel/kv';
+import { createClient } from 'redis';
 import { NextRequest, NextResponse } from 'next/server';
+
+// Create Redis client
+const redis = createClient({
+  url: process.env.REDIS_URL
+});
 
 export async function POST(request: NextRequest) {
   try {
@@ -13,8 +18,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Connect to Redis
+    if (!redis.isOpen) {
+      await redis.connect();
+    }
+
     // Check if email already exists
-    const existingEmail = await kv.get(`email:${email}`);
+    const existingEmail = await redis.get(`email:${email}`);
     if (existingEmail) {
       return NextResponse.json(
         { error: 'Email already registered' },
@@ -31,11 +41,11 @@ export async function POST(request: NextRequest) {
       ip: request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown'
     };
 
-    // Store in KV
-    await kv.set(`email:${email}`, signupData);
+    // Store in Redis
+    await redis.set(`email:${email}`, JSON.stringify(signupData));
     
     // Also store in a list for easy retrieval
-    await kv.lpush('email-signups', email);
+    await redis.lPush('email-signups', email);
 
     return NextResponse.json({ 
       success: true, 
@@ -54,8 +64,13 @@ export async function POST(request: NextRequest) {
 // Optional: GET route to retrieve signups (for admin use)
 export async function GET() {
   try {
-    const emails = await kv.lrange('email-signups', 0, -1);
-    const count = await kv.llen('email-signups');
+    // Connect to Redis
+    if (!redis.isOpen) {
+      await redis.connect();
+    }
+
+    const emails = await redis.lRange('email-signups', 0, -1);
+    const count = await redis.lLen('email-signups');
     
     return NextResponse.json({
       success: true,
