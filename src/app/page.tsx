@@ -65,7 +65,14 @@ export default function Home() {
           
           {/* CTA Button */}
           <div className="mt-8 sm:mt-10 lg:mt-12">
-            <button className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-indigo-600 border-2 border-indigo-600 rounded-xl shadow-lg hover:bg-indigo-700 hover:border-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-50 transition-all duration-200 ease-in-out transform hover:scale-105 active:scale-95 sm:px-8 sm:py-4 sm:text-lg">
+            <button 
+              onClick={() => {
+                document.getElementById('email-signup')?.scrollIntoView({ 
+                  behavior: 'smooth' 
+                });
+              }}
+              className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-indigo-600 border-2 border-indigo-600 rounded-xl shadow-lg hover:bg-indigo-700 hover:border-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-50 transition-all duration-200 ease-in-out transform hover:scale-105 active:scale-95 sm:px-8 sm:py-4 sm:text-lg"
+            >
               Join Early Access
             </button>
           </div>
@@ -141,7 +148,7 @@ export default function Home() {
       </section>
 
       {/* Email Signup Section */}
-      <section className="py-16 bg-slate-50 sm:py-20 lg:py-24">
+      <section id="email-signup" className="py-16 bg-slate-50 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12">
             <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
@@ -200,7 +207,14 @@ export default function Home() {
             Join thousands of creators who are already using our AI transcription service
           </p>
           <div className="mt-8 sm:mt-10">
-            <button className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-indigo-600 bg-white border-2 border-white rounded-xl shadow-lg hover:bg-slate-50 hover:border-slate-50 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600 transition-all duration-200 ease-in-out transform hover:scale-105 active:scale-95 sm:px-8 sm:py-4 sm:text-lg">
+            <button 
+              onClick={() => {
+                document.getElementById('email-signup')?.scrollIntoView({ 
+                  behavior: 'smooth' 
+                });
+              }}
+              className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-indigo-600 bg-white border-2 border-white rounded-xl shadow-lg hover:bg-slate-50 hover:border-slate-50 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600 transition-all duration-200 ease-in-out transform hover:scale-105 active:scale-95 sm:px-8 sm:py-4 sm:text-lg"
+            >
               Start Free Trial
             </button>
           </div>
