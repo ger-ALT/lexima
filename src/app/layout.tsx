@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI Transcriptions for India | Fast & Accurate Hindi & English",
-  description: "Fast, accurate, affordable AI transcriptions in Hindi and Indian-accented English for content creators. Optimized for India with instant results.",
+  title: "Lexima - AI Transcriptions for India | Fast & Accurate Hindi & English",
+  description: "Lexima: Fast, accurate, affordable AI transcriptions in Hindi and Indian-accented English for content creators. Optimized for India with instant results.",
 };
 
 export default function RootLayout({
